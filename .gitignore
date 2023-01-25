@@ -1,0 +1,4 @@
+.idea/
+_project/
+composer.lock
+vendor/

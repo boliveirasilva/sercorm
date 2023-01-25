@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  sercorm:
+    container_name: sercorm-webserver
+    image: boliveirasilva/php56-firebird25-oci8
+    restart: unless-stopped
+    working_dir: /var/www/html
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    ports:
+      - "8051:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - DOCUMENT_ROOT=/var/www/html/public
+    networks:
+      project_orm:
+        ipv4_address: 172.51.0.4
+
+networks:
+  project_orm:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.51.0.0/16
+          gateway: 172.51.0.1
