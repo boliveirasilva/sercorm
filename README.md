@@ -8,7 +8,7 @@ It is not my intention to support or even continue to maintain it after project
 completion._
 
 This library is being built to work with PHP5.6 in an environment that can vary between 
-firebird, oracle and postgre databases. Due to internal issues, it was decided that 
+firebird, oracle and postgres databases. Due to internal issues, it was decided that 
 this library should be built on top of ADOdb instead of using PDO directly.
 
 ### Testing the Library

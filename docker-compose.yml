@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  sercorm:
+  web_server:
     container_name: sercorm-webserver
     image: boliveirasilva/php56-firebird25-oci8
     restart: unless-stopped
@@ -15,13 +15,20 @@ services:
     environment:
       - DOCUMENT_ROOT=/var/www/html/public
     networks:
-      project_orm:
-        ipv4_address: 172.51.0.4
+      - project_orm
+
+  orm_oracle:
+    image: gvenzl/oracle-xe:11.2.0.2
+    volumes:
+      - ./tests/database/oracle:/container-entrypoint-startdb.d
+    environment:
+      ORACLE_PASSWORD: root
+      APP_USER: sercorm
+      APP_USER_PASSWORD: sercorm
+    networks:
+      - project_orm
+
 
 networks:
   project_orm:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.51.0.0/16
-          gateway: 172.51.0.1

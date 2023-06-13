@@ -3,6 +3,7 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/5.7/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          backupGlobals="false"
+         processIsolation="true"
          colors="true"
          verbose="true">
     <testsuites>
@@ -18,6 +19,10 @@
     </filter>
 
     <php>
-        <const name="PHPUNIT_TESTSUITE" value="true"/>
+        <const name="DB_DRIVER" value="oci8"/>
+        <const name="DB_HOST" value="orm_oracle"/>
+        <const name="DB_NAME" value="xe"/>
+        <const name="DB_USER" value="sercorm"/>
+        <const name="DB_PASS" value="sercorm"/>
     </php>
 </phpunit>
